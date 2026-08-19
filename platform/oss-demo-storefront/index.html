@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="全球开源精选：从全球开源生态中筛选、审查并适配适合企业使用的应用。" />
+    <title>全球开源应用库 · 全球开源精选</title>
+    <link rel="stylesheet" href="./styles.css?v=20260818d" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="logo" href="https://opensource.kaypal.cn"><span class="mark">✦</span> 全球开源精选</a>
+        <nav class="nav-links">
+          <a href="https://opensource.kaypal.cn">返回首页</a>
+          <a href="#apps">精选应用</a>
+        </nav>
+        <a href="https://onboard.opensource.kaypal.cn" class="btn primary">免费开通 →</a>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="glow"></div>
+      <div class="wrap">
+        <span class="pill"><span class="dot"></span> 精选 · 审查 · 一键托管开源应用</span>
+        <h1>全球开源<span class="grad">应用库</span></h1>
+        <p class="sub">人工筛选、安全审查主流开源应用，标注许可证、评级与部署方式，帮你找到真正适合自己企业的工具。</p>
+      </div>
+    </section>
+
+    <section class="block" id="apps">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="eyebrow">Curated apps</div>
+          <h2>精选应用，开箱即用</h2>
+          <p>从知识库到设计工具，覆盖团队日常所需。每个条目都保留原项目身份，并标注九章结论。</p>
+        </div>
+
+        <div class="library-toolbar">
+          <label class="search-field">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="检索项目、用途、替代产品或许可证" />
+          </label>
+          <div class="filter-tabs" id="categoryFilters" aria-label="应用分类">
+            <button class="filter-tab active" type="button" data-category="全部">全部</button>
+            <button class="filter-tab" type="button" data-category="业务管理">业务管理</button>
+            <button class="filter-tab" type="button" data-category="知识库">知识库</button>
+            <button class="filter-tab" type="button" data-category="自动化">自动化</button>
+            <button class="filter-tab" type="button" data-category="运维与数据">运维与数据</button>
+            <button class="filter-tab" type="button" data-category="设计工具">设计工具</button>
+            <button class="filter-tab" type="button" data-category="九章智能自研">九章智能自研</button>
+          </div>
+        </div>
+
+        <div class="results-line">
+          <span id="resultsLabel">已按九章评审排序</span>
+          <div class="select-group">
+            <label class="select-field"><span>许可证</span><select id="licenseFilter"><option value="全部">全部</option><option value="MIT/Apache">MIT / Apache</option><option value="GPL/AGPL">GPL / AGPL</option><option value="需核授权">需核授权</option></select></label>
+            <label class="select-field"><span>部署</span><select id="deployFilter"><option value="全部">全部</option><option value="托管">托管</option><option value="独立实例">独立实例</option><option value="企业部署">企业部署</option></select></label>
+          </div>
+        </div>
+
+        <div class="apps" id="projectList"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <strong>暂时没有找到相符的应用</strong>
+          <span>换一个用途、许可证或分类试试。</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap foot-inner">
+        <div>© 2026 全球开源精选 · opensource.kaypal.cn</div>
+        <div>精选 · 审查 · 一键托管开源应用</div>
+      </div>
+    </footer>
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" type="button" data-action="close-modal" aria-label="关闭">×</button>
+        <p class="kicker">Global picks / service</p>
+        <h2 id="modalTitle">申请企业咨询</h2>
+        <p id="modalDescription">留下企业情况，我们会按业务目标推荐适合的应用和部署方式。</p>
+        <form id="contactForm">
+          <label><span>联系人</span><input name="name" type="text" placeholder="你的称呼" required /></label>
+          <label><span>联系方式</span><input name="contact" type="text" placeholder="手机号或微信" required /></label>
+          <label><span>想解决的问题</span><textarea name="need" rows="3" placeholder="例如：客户管理、知识库、自动化"></textarea></label>
+          <button class="btn primary" type="submit">提交咨询 ↗</button>
+        </form>
+        <p class="form-message" id="formMessage"></p>
+      </div>
+    </div>
+
+    <div class="detail-backdrop" id="detailBackdrop" hidden>
+      <article class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <button class="modal-close" type="button" data-action="close-detail" aria-label="关闭">×</button>
+        <div id="detailContent"></div>
+      </article>
+    </div>
+
+    <script src="./app.js?v=20260818d"></script>
+  </body>
+</html>

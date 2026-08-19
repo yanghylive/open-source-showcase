@@ -1,0 +1,9 @@
+services:
+  showcase-web:
+    build:
+      context: .
+    image: open-source-showcase-web:0.3.2
+    container_name: open-source-showcase-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8099:80"
