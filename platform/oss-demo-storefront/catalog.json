@@ -321,7 +321,7 @@
       "id": "opencut",
       "name": "OpenCut",
       "businessName": "开源视频剪辑",
-      "category": "下载使用",
+      "category": "设计工具",
       "tagline": null,
       "summary": "免费开源的视频剪辑器，对标 CapCut，支持 Web / 桌面 / 移动端，含插件与脚本能力。",
       "repo_url": "https://github.com/OpenCut-app/OpenCut",
