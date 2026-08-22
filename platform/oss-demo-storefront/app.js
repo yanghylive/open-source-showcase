@@ -51,19 +51,27 @@ function projectMatches(project) {
 
 function renderProjects() {
   const visible = projects.filter(projectMatches);
+  const downloadCount = visible.filter((p) => p.deploy && p.deploy.includes("桌面端")).length;
   resultsLabel.textContent = `${String(visible.length).padStart(2, "0")} 个项目 · 已按九章评审排序`;
+  if (downloadCount > 0) {
+    resultsLabel.textContent += ` · 含 ${downloadCount} 个下载使用`;
+  }
   projectList.innerHTML = visible
     .map((p) => {
+      const isDesktop = !!(p.deploy && p.deploy.includes("桌面端"));
+      const ctaLabel = isDesktop ? "下载使用 ↗" : p.launch_url ? "立即试用 ↗" : p.launchable ? "申请开通 ↗" : "申请试用";
       const tryBtn = p.launch_url
-        ? `<a class="btn-try" href="${p.launch_url}" target="_blank" rel="noreferrer">立即试用 ↗</a>`
+        ? `<a class="btn-try${isDesktop ? " desktop" : ""}" href="${p.launch_url}" target="_blank" rel="noreferrer">${ctaLabel}</a>`
         : p.launchable
-          ? `<button class="btn-try" type="button" data-action="consult" data-project-name="${p.name}">申请开通 ↗</button>`
-          : `<button class="btn-try ghost" type="button" data-action="consult" data-project-name="${p.name}">申请试用</button>`;
+          ? `<button class="btn-try" type="button" data-action="consult" data-project-name="${p.name}">${ctaLabel}</button>`
+          : `<button class="btn-try ghost" type="button" data-action="consult" data-project-name="${p.name}">${ctaLabel}</button>`;
+      const downloadTag = isDesktop ? `<span class="download-badge" title="桌面端下载使用，不在云端托管"><span class="dl-icon">⬇</span>下载使用</span>` : "";
       return `
-        <article class="app">
+        <article class="app${isDesktop ? " is-desktop" : ""}">
           <img class="logo-box" src="${p.avatar}" alt="" loading="lazy" />
           <h4>${p.name}</h4>
           <div class="cat">${p.category}</div>
+          ${downloadTag}
           <p>${p.description}</p>
           <div class="app-meta">
             <span class="rating">${p.rating}</span>
@@ -112,7 +120,7 @@ function openDetail(projectName) {
     <div class="detail-topline"><span>项目案卷 / Project dossier</span><span>${project.reviewDate}</span></div>
     <div class="detail-title">
       <img src="${project.avatar}" alt="" />
-      <div class="t"><span class="biz">${project.businessName}</span><h2 id="detailTitle">${project.name}</h2></div>
+      <div class="t"><span class="biz">${project.businessName}</span><h2 id="detailTitle">${project.name}</h2>${project.deploy && project.deploy.includes("桌面端") ? '<span class="download-badge" title="桌面端下载使用，不在云端托管"><span class="dl-icon">⬇</span>下载使用</span>' : ""}</div>
       <strong>九章评级 ${project.rating}</strong>
     </div>
     <p class="detail-lead">${project.description}</p>
@@ -124,9 +132,14 @@ function openDetail(projectName) {
     </div>
     <div class="detail-note"><span>已知边界</span><p>${project.risk}</p></div>
     <div class="detail-actions">
-      ${project.launch_url
-        ? `<a class="btn primary" href="${project.launch_url}" target="_blank" rel="noreferrer">立即试用 ↗</a>`
-        : `<button class="btn primary" type="button" data-action="consult" data-project-name="${project.name}">申请试用 / 部署 ↗</button>`}
+      ${(() => {
+        const isDesktop = project.deploy && project.deploy.includes("桌面端");
+        const desktopNote = isDesktop ? "<p class=\"detail-deploy-note\">桌面端下载使用项目，不在云端托管；本页面只做收录与许可证记录。</p>" : "";
+        const cta = project.launch_url
+          ? `<a class="btn primary" href="${project.launch_url}" target="_blank" rel="noreferrer">${isDesktop ? "下载使用 ↗" : "立即试用 ↗"}</a>`
+          : `<button class="btn primary" type="button" data-action="consult" data-project-name="${project.name}">${isDesktop ? "申请下载指引 ↗" : "申请试用 / 部署 ↗"}</button>`;
+        return cta + desktopNote;
+      })()}
       <a class="btn ghost" href="${project.url}" target="_blank" rel="noreferrer">查看原项目 ↗</a>
     </div>
   `;
