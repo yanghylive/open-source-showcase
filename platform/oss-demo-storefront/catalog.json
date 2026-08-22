@@ -12,7 +12,7 @@
       "delivery_none": 1
     },
     "verification_update": "2026-08-12 技术核实后修正：MaxKB/Halo 真多租户需商业版/单站点，delivery_mode 改 independent_on_pay；Umami 保留 both（网站级隔离试点）。",
-    "updated_at": "2026-08-22T00:00:00+08:00"
+    "updated_at": "2026-08-22T05:00:00+08:00"
   },
   "items": [
     {
@@ -321,7 +321,7 @@
       "id": "opencut",
       "name": "OpenCut",
       "businessName": "开源视频剪辑",
-      "category": "设计工具",
+      "category": "下载使用",
       "tagline": null,
       "summary": "免费开源的视频剪辑器，对标 CapCut，支持 Web / 桌面 / 移动端，含插件与脚本能力。",
       "repo_url": "https://github.com/OpenCut-app/OpenCut",
@@ -330,7 +330,7 @@
       "licenseLabel": "MIT · 可商用",
       "license_review": "合规",
       "real_usage": "需要免费、可自托管的视频剪辑工具的创作者与团队",
-      "deployment_notes": "跨平台桌面端；当前可用经典版走官网 opencut.app（主仓 Rust 重写中）。",
+      "deployment_notes": "客户端产品：web 访问 https://opencut.app 即用；桌面/移动下载官网安装包。不可部署为 SaaS 实例。",
       "jiuzhang_verdict": "推荐",
       "multitenant_capable": false,
       "delivery_mode": "none",
@@ -353,7 +353,7 @@
       "language": "TypeScript",
       "description": "免费开源的视频剪辑器，对标 CapCut，支持 Web / 桌面 / 移动端，含插件与脚本能力。",
       "suitable": "需要免费、可自托管的视频剪辑工具的创作者与团队",
-      "risk": "主仓重构中；桌面安装包以官网经典版为准",
+      "risk": "客户端下载使用产品（web+desktop+mobile）；主仓 OpenCut-app/OpenCut 正在 Rust 重写，可用版本 opencut-app/opencut-classic；官网 opencut.app 跑的是 classic 版（85k stars、MIT 协议、TypeScript+Rust）",
       "facts": [],
       "weights": [],
       "avatar": "https://avatars.githubusercontent.com/u/217499887?v=4",
