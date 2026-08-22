@@ -5,13 +5,14 @@
     "source": "https://opensource.kaypal.cn/app.js?v=20260811c (只读抓取，未改动生产)",
     "note": "原字段(name/businessName/category/license/licenseLabel/deploy/status/service/pools/rating/score/reviewDate/language/description/suitable/risk/avatar/url)为线上真实数据。扩展字段中：license_review/jiuzhang_verdict/review_status 由 licenseLabel/rating/status 映射（建议值，需评审）；multitenant_capable/delivery_mode 为基于 deploy/status/service 的交付建议值，需技术核实，非编造。pricing_tier/independent_deploy_price/not_suitable_for/facts/weights/homepage_url/launch_url/tagline 暂缺，待补。",
     "summary_counts": {
-      "total": 21,
+      "total": 22,
       "launchable": 3,
       "delivery_shared_or_both": 3,
       "delivery_independent_on_pay": 2,
       "delivery_none": 1
     },
-    "verification_update": "2026-08-12 技术核实后修正：MaxKB/Halo 真多租户需商业版/单站点，delivery_mode 改 independent_on_pay；Umami 保留 both（网站级隔离试点）。"
+    "verification_update": "2026-08-12 技术核实后修正：MaxKB/Halo 真多租户需商业版/单站点，delivery_mode 改 independent_on_pay；Umami 保留 both（网站级隔离试点）。",
+    "updated_at": "2026-08-22T00:00:00+08:00"
   },
   "items": [
     {
@@ -576,6 +577,34 @@
       "avatar": "https://avatars.githubusercontent.com/u/230822255?v=4",
       "url": "https://github.com/yanghylive/saas-jiuzhangai",
       "deploy": "独立实例"
+    },
+    {
+      "id": "jellyfish",
+      "name": "九章 AI 短剧创作平台",
+      "sub": "端到端 AI 短剧工作台：剧本→分镜→角色一致性→镜头→视频（Apache-2.0 纯协议，开源演示）",
+      "category": "AI 全球精选",
+      "status": "已部署·LLM 待配",
+      "rating": "A+",
+      "score": 92,
+      "jiuzhang_verdict": "纯开源协议·自建 demo",
+      "deploy": "path② 独立实例(7 容器)",
+      "licenseLabel": "Apache-2.0 纯协议",
+      "compliance": "合规",
+      "launchable": true,
+      "launch_url": "https://drama.opensource.kaypal.cn",
+      "homepage_url": "https://drama.opensource.kaypal.cn",
+      "serviceLine": "JIUZHANG AI 开源演示",
+      "industries": [
+        "media",
+        "saas"
+      ],
+      "tags": [
+        "short_drama",
+        "video_generation",
+        "multi_agent",
+        "image_generation"
+      ],
+      "risk": "Jellyfish 主项目部署于 drama.opensource.kaypal.cn（7 容器：mysql+redis+rustfs+backend+celery-worker+front+init-db，2026-08-22 上线）；上游 Forget-C/Jellyfish（6.1k stars、纯 Apache-2.0、无商业补充条款）；后端 101 个 API 路由（film/llm/studio/chapters/shots/users）+ 中文 UI（fallbackLng=zh-CN、4 个 zh-CN locale 文件、docs/README.zh.md）；LobeHub/docker 部署门槛单条命令 docker compose up；当前 LLM key 未配（demo 壳可进，对话/视频生成任务会失败）"
     },
     {
       "id": "jiuzhang-inspection",
